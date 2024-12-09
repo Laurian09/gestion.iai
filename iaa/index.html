@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+	<title>IAI IAI-Cameroun</title>
+</head>
+<body>
+	<h1 class="text-logo"><span class="glyphicon glyphicon"></span> Systeme de gestion du personnel de l'IAI Cameroun <span class="glyphicon glyicon"></span></h1>
+    <header>
+        <nav>
+            <h1>IAI CAMEROUN</h1>
+            <ul id="navli">
+                <li><a class="homeblack" href="index.html">Accueil</a></li>
+                <li><a class="homered" href="connperso.php">connection</a></li>
+                <li><a class="homered" href="conection.php">Quitter</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="divider"></div>
+	<main>
+		<section class="hero">
+			<h2></h2>
+			
+		</section>
+		<section class="destinations">
+			<h2> GESTION DE ASSIDUITER </h2>
+			<ul>
+				<li>
+					<img src="./photo/Capture1.PNG" alt="abs">
+					<h3>ABSENCE</h3>
+					<p>A partir  de <!--60 exclussion--></p>
+				</li>
+				<li>
+					<img src="./photo/assiduite.png" alt="pnct">
+					<h3>PONCTUALITE</h3>
+					<p> ETRE TOUJOURS PONCTUELS </p>
+				</li>
+				<li>
+					<img src="./photo/47.jpg" alt="times">
+					<h3>LE TEMPS</h3>
+					<p>Apres l'heure ce n'est plus</p>
+				</li>
+			</ul>
+		</section>
+	</main>
+	<footer>
+        <div class="div">
+            <div class="div1">
+                    <h2>A PROPOS</h2>
+                    <a href="Accueil.html"><p> Politique de confidentialite</p></a>
+                    <a href="Accueil.html"><p>Politique de Cookies</p></a>
+                    <a href="Accueil.html"><p>Conditions generales</p></a>
+            </div>
+            <div class="div2">
+                <h2>CONTACT</h2>
+                    <p>E-mail : www.iaicameroun.com</p>
+                    <p>Phone : +237 6 97 50 27 08</p>
+            </div>
+        </div>
+        <p>&copy; IAI-Cameroun 2024</p>
+    </footer>
+</body>
+</html>
+
+<style>
+
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+}
+
+
+header {
+	height: 30px;
+	width: 97%;
+	position: fixed;
+	background-color: #3cc03cee;
+	color: rgb(241, 235, 235);
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+header h1{
+  display: inline;
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  font-size: 32px;
+  float: left;
+  margin-top: 0px;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: inline;
+  padding: 6px;
+  float: right;
+}
+
+nav ul li{
+  display: inline-block;
+  list-style-type: none;
+  color: white;
+  margin-left: 12px;
+}
+
+nav ul li a{
+  color: white;
+  text-decoration: none;  
+}
+
+
+nav ul ul{
+  display: none;
+  position: absolute;
+}
+
+#navli ul li ul:hover{
+  visibility: visible;
+  display: block;
+}
+
+
+#navli{
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 319px;
+}
+
+.homered:hover{
+  background-color: green ;
+  padding: 15px 10px 22px 10px;
+  border-radius: 12px;  
+}
+
+
+.homeblack:hover{
+  background-color: green;
+  padding: 15px 20px 18px 10px;
+  border-radius: 12px;
+}
+
+
+nav a:hover {
+	text-decoration: underline;
+}
+
+.hero {
+	background-size: cover;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+
+
+    animation-name: diapo1;
+    animation-duration: 10s ;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+
+}
+
+
+@keyframes diapo1{
+    0%{background-image:url("1.jpg");}
+    33%{background-image:url("12.jpg");}
+    66%{background-image:url("2.png");}
+    100%{background-image:url("./photo/12.JPG");}
+}
+
+.hero h2 {
+	font-size: 48px;
+	margin-bottom: 20px;
+}
+
+form {
+	display: flex;
+	margin-top: 20px;
+}
+
+
+
+.destinations {
+	padding: 50px;
+	background-color: #f5f5f5;
+	text-align: center;
+}
+
+.destinations h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+.destinations ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+}
+
+.destinations li {
+	flex-basis: 30%;
+}
+
+.destinations img {
+    height: 200px;
+    width: 200px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+
+.destinations h3 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.destinations p {
+	font-size: 16px;
+	color: #888;
+}
+
+footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+    }
+    footer .div {
+        display: inline-flex;
+        justify-content: space-around;
+    }
+footer .div .div1 p {
+    text-align: left;
+}
+footer .div .div2 p{
+    text-align: left;
+}
+footer p {
+    text-align: center;
+}
+footer a {
+    color: #db2d2d;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+</style>

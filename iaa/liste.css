@@ -1,0 +1,103 @@
+header{
+    background: black;
+    color: white;
+    padding: 16px 20px 6px 40px;
+  }
+  
+  header h1{
+    display: inline;
+    font-family: 'Lobster', cursive;
+    font-weight: 400;
+    font-size: 32px;
+    float: left;
+    margin-top: 0px;
+    margin-right: 10px;
+  }
+  
+  nav ul {
+    display: inline;
+    padding: 6px;
+    float: right;
+  }
+  
+  nav ul li{
+    display: inline-block;
+    list-style-type: none;
+    color: white;
+    margin-left: 12px;
+    
+  
+  }
+  
+  nav ul li a{
+    color: white;
+    text-decoration: none;  
+  }
+  
+  
+  nav ul ul{
+    display: none;
+    position: absolute;
+  }
+  
+  #navli ul li ul:hovar{
+    visibility: visible;
+    display: block;
+  }
+  
+  
+  #navli{
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .homered{
+    background-color: green ;
+    padding: 30px 10px 22px 10px;
+  }
+  
+  .divider{
+    background-color: green;
+    height: 35px;
+  }
+  
+  .homeblack:hover{
+    background-color: green;
+    padding: 30px 20px 18px 10px;
+  
+  }
+  
+ 
+/*
+  .tables{
+    /*display: flex;/
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+
+  }
+*/
+
+  
+ /* .text-logo
+  {
+      font-family: 'Holtwood One SC', sans-serif;
+      color: #e7480f;
+      text-shadow: 2px 2px #ffd301;
+      font-size: 50px;
+      padding: 40px 0px;
+      text-align: center;
+  }
+
+  
+.text-logo .glyphicon
+{
+    color: #ffd301;
+    text-shadow: 0px 0px #ffd301;
+}
+    */
+
+    
+.thumbnail img
+{
+    background: #ffd301;
+}

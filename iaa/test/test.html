@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse des données d'arrivée</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.0/chart.min.css">
+    <style>
+        /* Style de base pour les graphiques */
+        .chart-container {
+            width: 90%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Analyse des données d'arrivée</h1>
+
+    <!-- Conteneurs pour chaque graphique -->
+    <div class="chart-container">
+        <canvas id="arrivalsByDateChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="reasonChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="statusChart"></canvas>
+    </div>
+
+    <!-- Filtres dynamiques -->
+    <div style="text-align: center; margin-top: 20px;">
+        <label for="dateFilter">Filtrer par date :</label>
+        <input type="date" id="dateFilter" onchange="updateCharts()">
+    </div>
+
+    <!-- Inclure la bibliothèque Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.0/chart.min.js"></script>
+
+    <!-- Script JavaScript pour configurer les graphiques -->
+    <script>
+        // Exemple de données (remplacez-les par vos données de base de données)
+        const data = {
+            arrivals: [
+                { date: '2024-11-10', status: 'retard', reason: 'myladie', count: 6 },
+                { date: '2024-11-10', status: 'retard', reason: 'deuil', count: 12 },
+                { date: '2024-11-11', status: 'en retard', reason: 'prop', count: 13 },
+                { date: '2024-11-11', status: 'en retard', reason: 'lmm', count: 14 },
+                // Ajoutez d'autres enregistrements
+            ],
+        };
+
+        // Fonction pour regrouper les données par date
+        function getArrivalsByDate() {
+            const grouped = {};
+            data.arrivals.forEach(item => {
+                grouped[item.date] = (grouped[item.date] || 0) + 1;
+            });
+            return Object.keys(grouped).map(date => ({ date, count: grouped[date] }));
+        }
+
+        // Fonction pour obtenir la répartition des raisons
+        function getReasonsDistribution() {
+            const grouped = {};
+            data.arrivals.forEach(item => {
+                grouped[item.reason] = (grouped[item.reason] || 0) + item.count;
+            });
+            return Object.keys(grouped).map(reason => ({ reason, count: grouped[reason] }));
+        }
+
+        // Fonction pour obtenir la répartition des statuts
+        function getStatusDistribution() {
+            const grouped = {};
+            data.arrivals.forEach(item => {
+                grouped[item.status] = (grouped[item.status] || 0) + 1;
+            });
+            return Object.keys(grouped).map(status => ({ status, count: grouped[status] }));
+        }
+
+        // Initialiser les graphiques
+        const arrivalsByDateChart = new Chart(document.getElementById('arrivalsByDateChart'), {
+            type: 'bar',
+            data: {
+                labels: getArrivalsByDate().map(item => item.date),
+                datasets: [{
+                    label: 'Nombre d\'arrivées par date',
+                    data: getArrivalsByDate().map(item => item.count),
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Date' }},
+                    y: { title: { display: true, text: 'Nombre d\'arrivées' }}
+                }
+            }
+        });
+
+        const reasonChart = new Chart(document.getElementById('reasonChart'), {
+            type: 'bar',
+            data: {
+                labels: getReasonsDistribution().map(item => item.reason),
+                datasets: [{
+                    label: 'Raisons d\'absence',
+                    data: getReasonsDistribution().map(item => item.count),
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Raison' }},
+                    y: { title: { display: true, text: 'Fréquence' }}
+                }
+            }
+        });
+
+        const statusChart = new Chart(document.getElementById('statusChart'), {
+            type: 'pie',
+            data: {
+                labels: getStatusDistribution().map(item => item.status),
+                datasets: [{
+                    label: 'Répartition des statuts',
+                    data: getStatusDistribution().map(item => item.count),
+                    backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)'],
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Fonction pour mettre à jour les graphiques en fonction des filtres
+        function updateCharts() {
+            const dateFilter = document.getElementById('dateFilter').value;
+            const filteredData = dateFilter ? data.arrivals.filter(item => item.date === dateFilter) : data.arrivals;
+
+            arrivalsByDateChart.data.labels = getArrivalsByDate().map(item => item.date);
+            arrivalsByDateChart.data.datasets[0].data = getArrivalsByDate().map(item => item.count);
+            arrivalsByDateChart.update();
+
+            reasonChart.data.labels = getReasonsDistribution().map(item => item.reason);
+            reasonChart.data.datasets[0].data = getReasonsDistribution().map(item => item.count);
+            reasonChart.update();
+
+            statusChart.data.labels = getStatusDistribution().map(item => item.status);
+            statusChart.data.datasets[0].data = getStatusDistribution().map(item => item.count);
+            statusChart.update();
+        }
+    </script>
+</body>
+</html>

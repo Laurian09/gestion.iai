@@ -1,0 +1,30 @@
+body
+{
+/*    background: url(picture/iai-pays-membres-390x390.jpg);*/
+}
+.site
+{
+    font-family: 'Holtwood One SC', sans-serif;
+}
+.text-logo
+{
+    font-family: 'Holtwood One SC', sans-serif;
+    color: #e7480f;
+    text-shadow: 2px 2px #ffd301;
+    font-size: 50PX;
+    padding: 40PX 40PX;
+    text-align: center;
+}
+.text-logo .glyphicon
+{
+color: #ffd301;
+    text-shadow: 0PX 0PX #ffd301;
+}
+.nav
+{
+    margin-bottom: 40px;
+}
+.thumbnail img
+{
+    background: #ffd301.
+}
